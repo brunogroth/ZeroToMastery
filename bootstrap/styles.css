@@ -1,0 +1,29 @@
+body, html { 
+    background: url(dark-wallpaper-dark-wallpapers-69396057.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+.col {
+    background-color: grey;
+    border: 1px solid red;
+}
+
+h1{
+    font-size: 3em;
+    color: white;
+}
+
+.button{
+    border-radius: 15px;
+}
+
+hr {
+    margin: 20px auto;
+    color: #1040dd;
+    border: 3px solid #1040dd;
+    max-width: 65px;
+    opacity: 1;  
+}
