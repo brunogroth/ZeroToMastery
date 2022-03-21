@@ -7,6 +7,14 @@ var database = [
     {
         username: "bruno.groth",
         password: "bruno123"
+    },
+    {
+        username: "andrei.hills",
+        password: "andreiandrei"
+    },
+    {
+        username: "tomas.payne",
+        password: "tompayne*"
     }
 ];
 
@@ -28,9 +36,18 @@ var newsfeed = [
 var usernamePrompt = prompt("What is your username?");
 var passwordPrompt = prompt("Whats is your password?");
 
+function isUserValid(username, password){
+    for(var i = 0; i<=database.length; i++ ){
+
+        if(username === database[i].username
+            && password === database[i].password){
+             return true;
+        }
+    }
+    return false;
+}
 function signIn(username, password){
-    if(username === database[0].username && password === database[0].password){
-        alert("Congrats! You are logged in.");
+    if(isUserValid(username, password)){
         console.log(newsfeed);
     }else{
         alert("Any username is registered with this credentials. Check your informations and try again.");
