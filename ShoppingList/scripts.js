@@ -28,7 +28,6 @@ function addItemClick(){
 function addItemEnter(event){
     if(inputLength() > 0 && event.key === "Enter"){
         addItem();
-        updateListedItems();
     }
 }
 
