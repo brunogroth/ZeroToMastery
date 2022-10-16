@@ -2,7 +2,6 @@ var input = document.getElementById("itemName");
 var button = document.getElementById("addItem");
 var list = document.getElementById("list");
 
-
 // Items Creation
 
 function inputLength(){
@@ -15,6 +14,9 @@ function addItem(){
     li.classList.add("listedItem");
     list.appendChild(li);
     input.value = "";
+    li.innerHTML = li.innerHTML + " ";
+    AddDeleteButton(li);
+    MarkAsDone(li);
 } 
 
 function addItemClick(){
@@ -26,6 +28,7 @@ function addItemClick(){
 function addItemEnter(event){
     if(inputLength() > 0 && event.key === "Enter"){
         addItem();
+        updateListedItems();
     }
 }
 
@@ -37,8 +40,33 @@ input.addEventListener("keypress", addItemEnter);
 function MarkAsDone(item){
     item.addEventListener("click", function(){
         item.classList.toggle("done");
+        
     });
 }
+
 var listedItem = document.querySelectorAll(".listedItem");
 
-listedItem.forEach(MarkAsDone);
+//Adding delete button
+
+function removeParent(evt) {
+    evt.target.removeEventListener("click", removeParent, false);
+    evt.target.parentNode.remove();
+  }
+  
+function AddDeleteButton(item){
+    button = document.createElement("button");
+    item.appendChild(button);
+    button.innerHTML='Delete';
+    button.onclick = removeParent;
+}
+
+listedItem.forEach(MarkAsDone, AddDeleteButton);
+
+//adding Delete Button in already existents items
+
+var deleteBtns = document.querySelectorAll(".delete");
+
+//add event listener to first 6 btns in HTML file
+for(var i = 0; i < deleteBtns.length; i++){
+	deleteBtns[i].addEventListener("click", removeParent, false);
+}
